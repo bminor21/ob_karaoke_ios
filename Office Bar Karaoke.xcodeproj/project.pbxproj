@@ -1,0 +1,324 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B110F4E1C002759005F7051 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B110F4D1C002759005F7051 /* SearchResultViewController.swift */; };
+		8B6DC9F91BFFF4700040567A /* office-bar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6DC9F71BFFF4700040567A /* office-bar-logo.png */; };
+		8BBA73031BFD64D70053221E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA73021BFD64D70053221E /* AppDelegate.swift */; };
+		8BBA73051BFD64D70053221E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA73041BFD64D70053221E /* ViewController.swift */; };
+		8BBA73081BFD64D70053221E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA73061BFD64D70053221E /* Main.storyboard */; };
+		8BBA730B1BFD64D70053221E /* Office_Bar_Karaoke.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA73091BFD64D70053221E /* Office_Bar_Karaoke.xcdatamodeld */; };
+		8BBA730D1BFD64D70053221E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA730C1BFD64D70053221E /* Assets.xcassets */; };
+		8BBA73101BFD64D70053221E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA730E1BFD64D70053221E /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8B110F4D1C002759005F7051 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		8B6DC9F71BFFF4700040567A /* office-bar-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "office-bar-logo.png"; sourceTree = "<group>"; };
+		8BBA72FF1BFD64D70053221E /* Office Bar Karaoke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Office Bar Karaoke.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BBA73021BFD64D70053221E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8BBA73041BFD64D70053221E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8BBA73071BFD64D70053221E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8BBA730A1BFD64D70053221E /* Office_Bar_Karaoke.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Office_Bar_Karaoke.xcdatamodel; sourceTree = "<group>"; };
+		8BBA730C1BFD64D70053221E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Office Bar Karaoke/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		8BBA730F1BFD64D70053221E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8BBA73111BFD64D70053221E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		8BB59CC21BFFF82C007546DF /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8B6DC9F71BFFF4700040567A /* office-bar-logo.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		8BBA72F61BFD64D60053221E = {
+			isa = PBXGroup;
+			children = (
+				8BBA73011BFD64D70053221E /* Office Bar Karaoke */,
+				8BBA73001BFD64D70053221E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8BBA73001BFD64D70053221E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8BBA72FF1BFD64D70053221E /* Office Bar Karaoke.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8BBA73011BFD64D70053221E /* Office Bar Karaoke */ = {
+			isa = PBXGroup;
+			children = (
+				8BB59CC21BFFF82C007546DF /* images */,
+				8BBA73021BFD64D70053221E /* AppDelegate.swift */,
+				8BBA73041BFD64D70053221E /* ViewController.swift */,
+				8BBA73061BFD64D70053221E /* Main.storyboard */,
+				8B110F4D1C002759005F7051 /* SearchResultViewController.swift */,
+				8BBA730C1BFD64D70053221E /* Assets.xcassets */,
+				8BBA730E1BFD64D70053221E /* LaunchScreen.storyboard */,
+				8BBA73111BFD64D70053221E /* Info.plist */,
+				8BBA73091BFD64D70053221E /* Office_Bar_Karaoke.xcdatamodeld */,
+			);
+			path = "Office Bar Karaoke";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8BBA72FE1BFD64D60053221E /* Office Bar Karaoke */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BBA73141BFD64D70053221E /* Build configuration list for PBXNativeTarget "Office Bar Karaoke" */;
+			buildPhases = (
+				8BBA72FB1BFD64D60053221E /* Sources */,
+				8BBA72FD1BFD64D60053221E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Office Bar Karaoke";
+			productName = "Office Bar Karaoke";
+			productReference = 8BBA72FF1BFD64D70053221E /* Office Bar Karaoke.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8BBA72F71BFD64D60053221E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Brett Minor";
+				TargetAttributes = {
+					8BBA72FE1BFD64D60053221E = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 8BBA72FA1BFD64D60053221E /* Build configuration list for PBXProject "Office Bar Karaoke" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8BBA72F61BFD64D60053221E;
+			productRefGroup = 8BBA73001BFD64D70053221E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8BBA72FE1BFD64D60053221E /* Office Bar Karaoke */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8BBA72FD1BFD64D60053221E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B6DC9F91BFFF4700040567A /* office-bar-logo.png in Resources */,
+				8BBA73101BFD64D70053221E /* LaunchScreen.storyboard in Resources */,
+				8BBA730D1BFD64D70053221E /* Assets.xcassets in Resources */,
+				8BBA73081BFD64D70053221E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8BBA72FB1BFD64D60053221E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BBA73051BFD64D70053221E /* ViewController.swift in Sources */,
+				8BBA73031BFD64D70053221E /* AppDelegate.swift in Sources */,
+				8B110F4E1C002759005F7051 /* SearchResultViewController.swift in Sources */,
+				8BBA730B1BFD64D70053221E /* Office_Bar_Karaoke.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8BBA73061BFD64D70053221E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BBA73071BFD64D70053221E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8BBA730E1BFD64D70053221E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BBA730F1BFD64D70053221E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8BBA73121BFD64D70053221E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8BBA73131BFD64D70053221E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8BBA73151BFD64D70053221E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Office Bar Karaoke/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Firebase",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brettminor.Office-Bar-Karaoke";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8BBA73161BFD64D70053221E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Office Bar Karaoke/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Firebase",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brettminor.Office-Bar-Karaoke";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8BBA72FA1BFD64D60053221E /* Build configuration list for PBXProject "Office Bar Karaoke" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BBA73121BFD64D70053221E /* Debug */,
+				8BBA73131BFD64D70053221E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BBA73141BFD64D70053221E /* Build configuration list for PBXNativeTarget "Office Bar Karaoke" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BBA73151BFD64D70053221E /* Debug */,
+				8BBA73161BFD64D70053221E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8BBA73091BFD64D70053221E /* Office_Bar_Karaoke.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8BBA730A1BFD64D70053221E /* Office_Bar_Karaoke.xcdatamodel */,
+			);
+			currentVersion = 8BBA730A1BFD64D70053221E /* Office_Bar_Karaoke.xcdatamodel */;
+			path = Office_Bar_Karaoke.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8BBA72F71BFD64D60053221E /* Project object */;
+}
