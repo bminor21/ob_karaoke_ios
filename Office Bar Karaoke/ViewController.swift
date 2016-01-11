@@ -41,10 +41,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         break
         case 1 : searchType = "artist"
         break
-        default : searchType = ""
+        default : searchType = "all"
         }
-        
-        print("Selected index \(self.queryType.selectedSegmentIndex)" )
     }
 
     
@@ -53,10 +51,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let temp = searchType.stringByAppendingString("=")
         var formattedString = str
         
-        
-        let chars : Set<Character> = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890".characters)
-        formattedString = String(str.characters.filter { chars.contains($0) })
-        formattedString = formattedString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        if( searchType != "all" ){
+            let chars : Set<Character> = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890".characters)
+            formattedString = String(str.characters.filter { chars.contains($0) })
+            formattedString = formattedString.stringByTrimmingCharactersInSet(
+                NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            )
+            formattedString = formattedString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        } else {
+            formattedString = "true";
+        }
         
         print(formattedString)
         

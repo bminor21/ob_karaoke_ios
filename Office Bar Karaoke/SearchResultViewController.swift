@@ -19,16 +19,17 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        let postEndPoint: String = "http://officebar.bytehost11.com/search.php?" + searchTerm
-        print(postEndPoint)
-        guard let url = NSURL(string: postEndPoint) else {
+        let endPoint: String = "http://192.168.0.2:8888/search.php?" + searchTerm
+        print(endPoint)
+        guard let url = NSURL(string: endPoint) else {
             print("Error: cannot create URL")
             return
         }
         
         
         let session = NSURLSession.sharedSession()
-        session.dataTaskWithURL(url, completionHandler: { ( data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        let req = NSURLRequest( URL:url )
+        session.dataTaskWithRequest(req, completionHandler: { ( data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             
             if let httpResponse = response as? NSHTTPURLResponse {
                 if( httpResponse.statusCode != 200 ) {
@@ -36,26 +37,38 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
                     return
                 }
             }
+            
             guard let responseData = data else {
-                self.searchResults.append("No Results - ")
+                self.searchResults.append("Your search did not return any results - ")
                 return
             }
+            
             guard error == nil else {
                 print(error)
                 return
             }
             
             // parse the result as JSON, since that's what the API provides
-            let post: NSDictionary
-            do {
-                post = try NSJSONSerialization.JSONObjectWithData(responseData,
-                    options: []) as! NSDictionary
-            } catch  {
-                print("error trying to convert data to JSON")
-                return
+            let json = JSON(data: responseData)
+            
+            if json.count == 0 {
+                self.searchResults.append("Your search did not return any results - ")
+            } else {
+                
+                for i in 0...json.count {
+                    let artist = json[i]["artist"].stringValue
+                    let song = json[i]["song"].stringValue
+                
+                    let str = song + "-" + artist
+                
+                    self.searchResults.append(str)
+                }
             }
             
-            print(post)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                });
+            
         }).resume()
         
     }
