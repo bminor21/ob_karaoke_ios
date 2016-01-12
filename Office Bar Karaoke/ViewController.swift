@@ -52,7 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var formattedString = str
         
         if( searchType != "all" ){
-            let chars : Set<Character> = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890".characters)
+            let chars : Set<Character> = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890'".characters)
             formattedString = String(str.characters.filter { chars.contains($0) })
             formattedString = formattedString.stringByTrimmingCharactersInSet(
                 NSCharacterSet.whitespaceAndNewlineCharacterSet()
@@ -69,7 +69,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "searchSegue") {
-            var svc = segue.destinationViewController as! SearchResultViewController;
+            let svc = segue.destinationViewController as! SearchResultViewController;
             
             svc.searchTerm = prepareURLString(searchField.text!)
             
