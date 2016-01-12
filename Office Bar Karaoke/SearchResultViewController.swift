@@ -19,7 +19,7 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        let endPoint: String = "http://192.168.0.2:8888/search.php?" + searchTerm
+        let endPoint: String = "http://officebarkaraoke.netne.net/search.php?" + searchTerm
         print(endPoint)
         guard let url = NSURL(string: endPoint) else {
             print("Error: cannot create URL")
