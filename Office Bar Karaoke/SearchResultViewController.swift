@@ -8,16 +8,19 @@
 
 import UIKit
 
-class SearchResultViewController: UIViewController, UITableViewDataSource, NSURLConnectionDelegate {
+class SearchResultViewController: UIViewController, UITableViewDataSource, NSURLConnectionDelegate, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var searchResults = [String]()
     var searchTerm: String!
     
+    var selectedItem: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.delegate = self;
         
         let endPoint: String = "http://officebarkaraoke.netne.net/search.php?" + searchTerm
         print(endPoint)
@@ -76,6 +79,15 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
         // Dispose of any resources that can be recreated.
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "rvcSegue") {
+            let dvc = segue.destinationViewController as! RequestSongViewController;
+            var result = selectedItem.componentsSeparatedByString("-")
+            dvc.songSelection = result[0];
+            dvc.artistSelection = result[1];
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -107,6 +119,12 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
         
         return cell!
         
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedItem = searchResults[indexPath.row]
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSegueWithIdentifier("rvcSegue", sender: self)
     }
 
 }

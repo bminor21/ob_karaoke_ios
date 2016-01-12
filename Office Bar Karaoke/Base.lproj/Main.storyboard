@@ -9,7 +9,6 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Office_Bar_Karaoke" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -81,6 +80,7 @@
                         <outlet property="searchTerm" destination="gh9-Mg-q4F" id="epc-NM-JhX"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="520" y="349"/>
         </scene>
@@ -157,14 +157,133 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="i2K-4D-Zw7" id="Dyr-DY-8RT"/>
+                        <segue destination="jdT-3h-BCj" kind="show" identifier="rvcSegue" id="lod-Hg-Mja"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cq6-Oh-fwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1260" y="349"/>
+            <point key="canvasLocation" x="1329" y="349"/>
+        </scene>
+        <!--Request Song View Controller-->
+        <scene sceneID="GId-j2-NGq">
+            <objects>
+                <viewController storyboardIdentifier="requestView" id="jdT-3h-BCj" customClass="RequestSongViewController" customModule="Office_Bar_Karaoke" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DdE-9P-Vsq"/>
+                        <viewControllerLayoutGuide type="bottom" id="zZE-Fa-eb8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uuF-5c-hpb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amP-Yl-KIL">
+                                <rect key="frame" x="159" y="73" width="81" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3h-bS-J0b">
+                                <rect key="frame" x="159" y="160" width="73" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="WUq-Hg-Eep"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="songField" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhL-nK-qPI">
+                                <rect key="frame" x="259" y="92" width="143" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="143" id="pPp-80-VCg"/>
+                                    <constraint firstAttribute="height" constant="21" id="rEc-Ep-D7X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artistField" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KwQ-vU-UZR">
+                                <rect key="frame" x="259" y="160" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your name and click 'Request' " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Anv-cb-Kzg">
+                                <rect key="frame" x="159" y="225" width="277" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Osh-QV-pI5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of performer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ijb-dc-73l">
+                                <rect key="frame" x="15" y="265" width="565" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Brs-tu-iBv">
+                                <rect key="frame" x="259" y="401" width="68" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="yow-YB-kcM"/>
+                                </constraints>
+                                <state key="normal" title="REQUEST"/>
+                                <connections>
+                                    <action selector="sendRequest:" destination="jdT-3h-BCj" eventType="touchUpInside" id="mjQ-7h-Dhk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0u-jn-Ecf">
+                                <rect key="frame" x="180" y="28" width="244" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="Hji-yF-Kv5"/>
+                                    <constraint firstAttribute="width" constant="244" id="gJb-cY-ita"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ijb-dc-73l" firstAttribute="leading" secondItem="uuF-5c-hpb" secondAttribute="leadingMargin" constant="-5" id="2ca-Cw-e3d"/>
+                            <constraint firstItem="Ijb-dc-73l" firstAttribute="top" secondItem="Anv-cb-Kzg" secondAttribute="bottom" constant="19" id="3Ty-ap-Inq"/>
+                            <constraint firstItem="KwQ-vU-UZR" firstAttribute="trailing" secondItem="lhL-nK-qPI" secondAttribute="trailing" id="6fG-0j-wvi"/>
+                            <constraint firstItem="KwQ-vU-UZR" firstAttribute="bottom" secondItem="e3h-bS-J0b" secondAttribute="bottom" id="8cm-Wn-rFL"/>
+                            <constraint firstItem="e3h-bS-J0b" firstAttribute="top" secondItem="amP-Yl-KIL" secondAttribute="bottom" constant="27" id="DPu-OO-ZtZ"/>
+                            <constraint firstItem="zZE-Fa-eb8" firstAttribute="top" secondItem="Brs-tu-iBv" secondAttribute="bottom" constant="169" id="DzL-SC-sae"/>
+                            <constraint firstItem="e3h-bS-J0b" firstAttribute="leading" secondItem="Anv-cb-Kzg" secondAttribute="leading" id="GQk-vr-GJ0"/>
+                            <constraint firstItem="Anv-cb-Kzg" firstAttribute="top" secondItem="e3h-bS-J0b" secondAttribute="bottom" constant="44" id="IeJ-u0-ShL"/>
+                            <constraint firstItem="m0u-jn-Ecf" firstAttribute="centerX" secondItem="uuF-5c-hpb" secondAttribute="centerX" constant="2" id="N1e-HJ-jEm"/>
+                            <constraint firstItem="Brs-tu-iBv" firstAttribute="centerX" secondItem="uuF-5c-hpb" secondAttribute="centerX" constant="-7" id="Olm-DR-DfL"/>
+                            <constraint firstItem="lhL-nK-qPI" firstAttribute="leading" secondItem="amP-Yl-KIL" secondAttribute="trailing" constant="19" id="Q85-gI-Y2y"/>
+                            <constraint firstItem="e3h-bS-J0b" firstAttribute="leading" secondItem="amP-Yl-KIL" secondAttribute="leading" id="Sb7-B4-QrI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ijb-dc-73l" secondAttribute="trailing" id="VlS-7p-A4E"/>
+                            <constraint firstItem="KwQ-vU-UZR" firstAttribute="top" secondItem="e3h-bS-J0b" secondAttribute="top" id="Xnk-Fn-fES"/>
+                            <constraint firstItem="lhL-nK-qPI" firstAttribute="top" secondItem="m0u-jn-Ecf" secondAttribute="bottom" constant="27" id="YXy-zN-E0T"/>
+                            <constraint firstItem="KwQ-vU-UZR" firstAttribute="leading" secondItem="e3h-bS-J0b" secondAttribute="trailing" constant="27" id="Zgw-w4-p4U"/>
+                            <constraint firstItem="Brs-tu-iBv" firstAttribute="leading" secondItem="KwQ-vU-UZR" secondAttribute="leading" id="as5-1b-7k3"/>
+                            <constraint firstItem="m0u-jn-Ecf" firstAttribute="top" secondItem="DdE-9P-Vsq" secondAttribute="bottom" constant="8" symbolic="YES" id="bfQ-5y-eGb"/>
+                            <constraint firstItem="amP-Yl-KIL" firstAttribute="top" secondItem="m0u-jn-Ecf" secondAttribute="bottom" constant="8" symbolic="YES" id="epf-Xc-71H"/>
+                            <constraint firstItem="Anv-cb-Kzg" firstAttribute="centerX" secondItem="uuF-5c-hpb" secondAttribute="centerX" constant="-2.5" id="hQ9-rz-bBg"/>
+                            <constraint firstItem="amP-Yl-KIL" firstAttribute="centerY" secondItem="lhL-nK-qPI" secondAttribute="centerY" id="jyw-8b-PCN"/>
+                            <constraint firstItem="KwQ-vU-UZR" firstAttribute="leading" secondItem="lhL-nK-qPI" secondAttribute="leading" id="t1S-W1-jIg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="artistField" destination="KwQ-vU-UZR" id="x2s-BA-P3p"/>
+                        <outlet property="singerField" destination="Ijb-dc-73l" id="7pH-oB-fTA"/>
+                        <outlet property="songField" destination="lhL-nK-qPI" id="eY6-Q2-1Hs"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="returnHome" id="DLS-OO-KWJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tGm-wK-wgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="1093"/>
         </scene>
     </scenes>
     <resources>
         <image name="office-bar-logo.png" width="500" height="257"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DLS-OO-KWJ"/>
+    </inferredMetricsTieBreakers>
 </document>
