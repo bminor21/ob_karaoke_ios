@@ -79,8 +79,15 @@ class RequestSongViewController: UIViewController {
             }
             
             dispatch_async(dispatch_get_main_queue(), {
+                
+                var alertTitle:String!
+                if( self.isSuccessful! ){
+                    alertTitle = "Success"
+                } else {
+                    alertTitle = "Error"
+                }
             
-                let alertController = UIAlertController(title: "Error", message: self.getMessageText(self.isSuccessful), preferredStyle: .Alert)
+                let alertController = UIAlertController(title: alertTitle, message: self.getMessageText(self.isSuccessful), preferredStyle: .Alert)
                 
                 let home = UIAlertAction(title: "Okay", style: .Default, handler: {action in
                     
@@ -99,7 +106,7 @@ class RequestSongViewController: UIViewController {
         var buf: String!
         
         if(success){
-            buf = "Your submittion was successful.\n\n"
+            buf = "Your song submittion was successful.\n\n"
             
         } else {
             buf = "There was an error processing your request. Please fill out a blank paper and hand it to the DJ.\n\n"
