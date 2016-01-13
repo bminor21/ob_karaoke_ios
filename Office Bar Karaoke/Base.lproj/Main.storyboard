@@ -42,12 +42,15 @@
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7p7-Yc-iRC">
                                 <rect key="frame" x="226.5" y="517" width="147" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1gV-8e-9ek"/>
                                     <constraint firstAttribute="width" constant="147" id="TXE-Zn-wul"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="SEARCH"/>
+                                <state key="normal" title="SEARCH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="XnG-TP-nNS" kind="show" identifier="searchSegue" id="W7u-Ut-a8W"/>
                                 </connections>
@@ -76,6 +79,7 @@
                     <navigationItem key="navigationItem" id="VkE-uf-75j"/>
                     <connections>
                         <outlet property="queryType" destination="BQ3-yi-qz1" id="krI-am-pqT"/>
+                        <outlet property="searchButton" destination="7p7-Yc-iRC" id="kel-AJ-ufL"/>
                         <outlet property="searchField" destination="gh9-Mg-q4F" id="TWK-aS-ZFN"/>
                         <outlet property="searchTerm" destination="gh9-Mg-q4F" id="epc-NM-JhX"/>
                     </connections>

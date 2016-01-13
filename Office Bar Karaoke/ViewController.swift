@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var searchTerm: UITextField!
     
     @IBOutlet weak var queryType: UISegmentedControl!
+    @IBOutlet weak var searchButton: UIButton!
     
     var searchType:String = "song"
     
@@ -21,6 +22,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.searchField.delegate = self
+        
+        searchButton.layer.cornerRadius = 5
+        searchButton.layer.borderWidth = 1
+        searchButton.layer.borderColor = UIColor.whiteColor().CGColor
     }
 
     override func didReceiveMemoryWarning() {
