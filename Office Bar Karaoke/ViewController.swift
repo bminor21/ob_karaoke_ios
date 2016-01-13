@@ -72,6 +72,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return temp.stringByAppendingString(formattedString)
     }
     
+    //MARK: - Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "searchSegue") {
             let svc = segue.destinationViewController as! SearchResultViewController;

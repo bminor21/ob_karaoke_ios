@@ -78,27 +78,22 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+   
+    //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "rvcSegue") {
             let dvc = segue.destinationViewController as! RequestSongViewController;
             var result = selectedItem.componentsSeparatedByString("-")
-            dvc.songSelection = result[0];
-            dvc.artistSelection = result[1];
+            dvc.songSelection = result[0]
+            dvc.artistSelection = result[1]
+            dvc.previousSearchTerm = searchTerm
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
+    
+
+    //MARK: - Table View Actions
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }

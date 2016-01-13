@@ -8,16 +8,18 @@
 
 import UIKit
 
-class RequestSongViewController: UIViewController {
+class RequestSongViewController: UIViewController, UITextFieldDelegate {
 
     var songSelection: String!
     var artistSelection: String!
     var isSuccessful: Bool!
+    var previousSearchTerm: String!
     
     @IBOutlet weak var songField: UILabel!
     @IBOutlet weak var artistField: UILabel!
     
     @IBOutlet weak var singerField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,21 @@ class RequestSongViewController: UIViewController {
         self.songField.text = songSelection;
         self.artistField.text = artistSelection;
         self.isSuccessful = false
+        
+        
+        self.singerField.delegate = self;
+        
+        submitButton.layer.cornerRadius = 5
+        submitButton.layer.borderWidth = 1
+        submitButton.layer.borderColor = UIColor.whiteColor().CGColor
 
+    }
+    
+    //MARK: - Delegation Functions
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,14 +155,14 @@ class RequestSongViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "backToResults") {
+            let dvc = segue.destinationViewController as! SearchResultViewController;
+            dvc.searchTerm = previousSearchTerm
+        }
     }
-    */
-
 }
