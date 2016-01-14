@@ -16,19 +16,61 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
     var searchTerm: String!
     
     var selectedItem: String!
+    var indicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.delegate = self;
         
-        let endPoint: String = "http://officebarkaraoke.netne.net/search.php?" + searchTerm
+        initializeIndicator()
+        setupHttpRequest()
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+   
+    //MARK: - Navigation
+    @IBAction func backButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "rvcSegue") {
+            let dvc = segue.destinationViewController as! RequestSongViewController;
+            let result = selectedItem.componentsSeparatedByString(";")
+            dvc.songSelection = result[0];
+            dvc.artistSelection = result[1]
+        }
+    }
+    
+    //MARK: - Behind the scense
+    func initializeIndicator() -> Void{
+        
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let size = screenSize.width * 0.5
+        
+        indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        indicator.frame = CGRect(x: 0.0, y: 0.0, width: size, height: size )
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+        indicator.bringSubviewToFront(self.view)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        indicator.startAnimating()
+    }
+    
+    //MARK: - URL Connection
+    func setupHttpRequest() -> Void {
+        
+        let endPoint: String = "http://officebarkaraoke.netne.net/search.php?" + self.searchTerm
         print(endPoint)
         guard let url = NSURL(string: endPoint) else {
             print("Error: cannot create URL")
             return
         }
-        
         
         let session = NSURLSession.sharedSession()
         let req = NSURLRequest( URL:url )
@@ -42,7 +84,7 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
             }
             
             guard let responseData = data else {
-                self.searchResults.append("Your search did not return any results - ")
+                self.searchResults.append("Your search did not return any results. ; ")
                 return
             }
             
@@ -55,42 +97,26 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
             let json = JSON(data: responseData)
             
             if json.count == 0 {
-                self.searchResults.append("Your search did not return any results - ")
+                self.searchResults.append("Your search did not return any results. ; ")
             } else {
                 
                 for i in 0...json.count {
                     let artist = json[i]["artist"].stringValue
                     let song = json[i]["song"].stringValue
-                
-                    let str = song + "-" + artist
-                
+                    
+                    let str = song + ";" + artist
+                    
                     self.searchResults.append(str)
                 }
             }
             
-            dispatch_async(dispatch_get_main_queue(), { self.tableView.reloadData() });
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.indicator.stopAnimating()
+            });
             
         }).resume()
-        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-   
-    //MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "rvcSegue") {
-            let dvc = segue.destinationViewController as! RequestSongViewController;
-            var result = selectedItem.componentsSeparatedByString("-")
-            dvc.songSelection = result[0]
-            dvc.artistSelection = result[1]
-            dvc.previousSearchTerm = searchTerm
-        }
-    }
-    
     
 
     //MARK: - Table View Actions
@@ -107,7 +133,7 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
                 reuseIdentifier: "Cell")
         }
         
-        var result = searchResults[indexPath.row].componentsSeparatedByString("-")
+        var result = searchResults[indexPath.row].componentsSeparatedByString(";")
         
         cell?.textLabel!.text = result[0]
         cell?.detailTextLabel!.text = result[1]

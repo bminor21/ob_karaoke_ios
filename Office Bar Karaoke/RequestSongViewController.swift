@@ -13,7 +13,6 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
     var songSelection: String!
     var artistSelection: String!
     var isSuccessful: Bool!
-    var previousSearchTerm: String!
     
     @IBOutlet weak var songField: UILabel!
     @IBOutlet weak var artistField: UILabel!
@@ -106,8 +105,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
                 let alertController = UIAlertController(title: alertTitle, message: self.getMessageText(self.isSuccessful), preferredStyle: .Alert)
                 
                 let home = UIAlertAction(title: "Okay", style: .Default, handler: {action in
-                    
-                    self.performSegueWithIdentifier("returnHome", sender: nil)
+                        self.performSegueWithIdentifier("unwindToMain", sender: self)
                 });
                 
                 alertController.addAction(home);
@@ -128,7 +126,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
             buf = "There was an error processing your request. Please fill out a blank paper and hand it to the DJ.\n\n"
         }
         
-        buf = buf + "Click Okay to return to the main screen"
+        buf = buf + "Click Okay to return to the Main Menu."
         
         return buf
     }
@@ -148,7 +146,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
     
     func displayError()->Void{
         
-        let alertController = UIAlertController(title: "Error", message: "Name field cannot be empty", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Error", message: "Name field cannot be empty.", preferredStyle: .Alert)
         
         let okay = UIAlertAction(title: "Okay", style: .Default ) { (action: UIAlertAction )->Void in }
         alertController.addAction(okay)
@@ -159,10 +157,11 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "backToResults") {
-            let dvc = segue.destinationViewController as! SearchResultViewController;
-            dvc.searchTerm = previousSearchTerm
-        }
+    // override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // }
+    
+    @IBAction func backButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
 }

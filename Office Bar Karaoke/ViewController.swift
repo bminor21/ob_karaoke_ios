@@ -27,6 +27,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         searchButton.layer.borderWidth = 1
         searchButton.layer.borderColor = UIColor.whiteColor().CGColor
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = true
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.hidden = false
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,16 +52,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func toggleSearchType(sender: AnyObject) {
         
         switch self.queryType.selectedSegmentIndex{
-        case 0 : searchType = "song"
-        break
-        case 1 : searchType = "artist"
-        break
-        default : searchType = "all"
+            case 0 : searchType = "song"
+            break
+            case 1 : searchType = "artist"
+            break
+            default : searchType = "all"
         }
+        
     }
 
     
-    // MARK: - Behind the Scenes
+    // MARK: - String Functions
     func prepareURLString(str: String ) -> String {
         let temp = searchType.stringByAppendingString("=")
         var formattedString = str
@@ -88,7 +99,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             if (searchField.text!.isEmpty && queryType.selectedSegmentIndex != 2 ) {
                 
-                let alertController = UIAlertController(title: "Error", message: "Search term cannot be empty", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Error", message: "Search term cannot be empty.", preferredStyle: .Alert)
                 
                 let okay = UIAlertAction(title: "Okay", style: .Default ) { (action: UIAlertAction )->Void in }
                 alertController.addAction(okay)
@@ -102,6 +113,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // by default, transition
         return true
+    }
+    
+    @IBAction func unwindToContainerVC(segue: UIStoryboardSegue) {
+        
     }
     
 }
