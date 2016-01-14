@@ -77,9 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else {
             formattedString = "true";
         }
-        
-        print(formattedString)
-        
+                
         return temp.stringByAppendingString(formattedString)
     }
     
