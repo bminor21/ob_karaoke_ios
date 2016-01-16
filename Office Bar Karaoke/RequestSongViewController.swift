@@ -126,22 +126,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
             buf = "There was an error processing your request. Please fill out a blank paper and hand it to the DJ.\n\n"
         }
         
-        buf = buf + "Click Okay to return to the Main Menu."
-        
         return buf
-    }
-    
-    func formatString( toFormat: String)-> String {
-        var formattedString:String!
-        
-        let chars : Set<Character> = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890'".characters)
-        formattedString = String(toFormat.characters.filter { chars.contains($0) })
-        formattedString = formattedString.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        formattedString = formattedString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-        
-        return formattedString
     }
     
     func displayError()->Void{

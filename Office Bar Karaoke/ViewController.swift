@@ -60,34 +60,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-
-    
-    // MARK: - String Functions
-    func prepareURLString(str: String ) -> String {
-        let temp = searchType.stringByAppendingString("=")
-        var formattedString = str
-        
-        if( searchType != "all" ){
-            let chars : Set<Character> = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890'".characters)
-            formattedString = String(str.characters.filter { chars.contains($0) })
-            formattedString = formattedString.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceAndNewlineCharacterSet()
-            )
-            formattedString = formattedString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-        } else {
-            formattedString = "true";
-        }
-                
-        return temp.stringByAppendingString(formattedString)
-    }
     
     //MARK: - Navigation
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "searchSegue") {
             let svc = segue.destinationViewController as! SearchResultViewController;
             
-            svc.searchTerm = prepareURLString(searchField.text!)
+            svc.searchTerm = prepareURLString(searchField.text!, searchType: self.searchType)
             
         }
     }
@@ -113,6 +92,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    //MARK: - Unwind to this point
     @IBAction func unwindToContainerVC(segue: UIStoryboardSegue) {
         
     }
