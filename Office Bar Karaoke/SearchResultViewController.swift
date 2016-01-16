@@ -104,7 +104,6 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
             let json = JSON(data: responseData)
             
             if json.count == 0 {
-                //self.searchResults.append("No results. ; ")
                 self.displayError()
             } else {
                 self.results = json;
@@ -137,7 +136,7 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
                 reuseIdentifier: "Cell")
         }
         
-        if searchTerm.containsString("song"){
+        if searchTerm.containsString("song="){
             cell?.textLabel!.text = results[indexPath.row]["song"].stringValue
             cell?.detailTextLabel!.text = results[indexPath.row]["artist"].stringValue
         } else {
