@@ -25,17 +25,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         searchButton.layer.cornerRadius = 5
         searchButton.layer.borderWidth = 1
-        searchButton.layer.borderColor = UIColor.whiteColor().CGColor
+        searchButton.layer.borderColor = UIColor.white.cgColor
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
         super.viewWillAppear(animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.isHidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,13 +43,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
    // MARK: - Interface Actions
-    @IBAction func toggleSearchType(sender: AnyObject) {
+    @IBAction func toggleSearchType(_ sender: AnyObject) {
         
         switch self.queryType.selectedSegmentIndex{
             case 0 : searchType = "song"
@@ -62,25 +62,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "searchSegue") {
-            let svc = segue.destinationViewController as! SearchResultViewController;
+            let svc = segue.destination as! SearchResultViewController;
             
             svc.searchTerm = prepareURLString(searchField.text!, searchType: self.searchType)
             
         }
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any!) -> Bool {
         if identifier == "searchSegue" {
             
             if (searchField.text!.isEmpty && queryType.selectedSegmentIndex != 2 ) {
                 
-                let alertController = UIAlertController(title: "Error", message: "Search term cannot be empty.", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Error", message: "Search term cannot be empty.", preferredStyle: .alert)
                 
-                let okay = UIAlertAction(title: "Okay", style: .Default ) { (action: UIAlertAction )->Void in }
+                let okay = UIAlertAction(title: "Okay", style: .default ) { (action: UIAlertAction )->Void in }
                 alertController.addAction(okay)
-                presentViewController(alertController, animated: true, completion: nil)
+                present(alertController, animated: true, completion: nil)
                 
                 return false
             } else {
@@ -93,7 +93,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: - Unwind to this point
-    @IBAction func unwindToContainerVC(segue: UIStoryboardSegue) {
+    @IBAction func unwindToContainerVC(_ segue: UIStoryboardSegue) {
         
     }
     

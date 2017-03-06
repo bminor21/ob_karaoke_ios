@@ -17,11 +17,11 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
     var selectedItem: Int!
     var indicator: UIActivityIndicatorView!
     
-    var results: JSON = nil
+    var results: JSON = JSON.null
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.delegate = self;
         
         initializeIndicator()
@@ -35,13 +35,13 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
     }
    
     //MARK: - Navigation
-    @IBAction func backButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "rvcSegue") {
-            let dvc = segue.destinationViewController as! RequestSongViewController;
+            let dvc = segue.destination as! RequestSongViewController;
             dvc.artistSelection = results[selectedItem]["artist"].stringValue
             dvc.songSelection = results[selectedItem]["song"].stringValue
         }
@@ -50,41 +50,41 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
     //MARK: - Behind the scense
     func initializeIndicator() -> Void{
         
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenSize: CGRect = UIScreen.main.bounds
         let size = screenSize.width * 0.5
         
-        indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicator.frame = CGRect(x: 0.0, y: 0.0, width: size, height: size )
         indicator.center = self.view.center
         self.view.addSubview(indicator)
-        indicator.bringSubviewToFront(self.view)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        indicator.bringSubview(toFront: self.view)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         indicator.startAnimating()
     }
     
     func displayError()->Void{
         
-        let alertController = UIAlertController(title: "Not Found", message: "Your search returned 0 results.", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Not Found", message: "Your search returned 0 results.", preferredStyle: .alert)
         
-        let okay = UIAlertAction(title: "Okay", style: .Default ) { (action: UIAlertAction )->Void in }
+        let okay = UIAlertAction(title: "Okay", style: .default ) { (action: UIAlertAction )->Void in }
         alertController.addAction(okay)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - URL Connection
     func setupHttpRequest() -> Void {
         
-        let endPoint: String = "http://officebarkaraoke.netne.net/search.php?" + self.searchTerm
-        guard let url = NSURL(string: endPoint) else {
+        let endPoint: String = "https://obkaraoke.herokuapp.com/?" + self.searchTerm
+        guard let url = URL(string: endPoint) else {
             print("Error: cannot create URL")
             return
         }
         
-        let session = NSURLSession.sharedSession()
-        let req = NSURLRequest( URL:url )
-        session.dataTaskWithRequest(req, completionHandler: { ( data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        let session = URLSession.shared
+        let req = URLRequest( url:url )
+        session.dataTask(with: req, completionHandler: { ( data: Data?, response: URLResponse?, error: Error?) -> Void in
             
-            if let httpResponse = response as? NSHTTPURLResponse {
+            if let httpResponse = response as? HTTPURLResponse {
                 if( httpResponse.statusCode != 200 ) {
                     print("Received status code \(httpResponse.statusCode)")
                     return
@@ -109,7 +109,7 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
                 self.results = json;
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
                 self.indicator.stopAnimating()
             });
@@ -119,39 +119,42 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
     
 
     //MARK: - Table View Actions
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard results == nil else {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard results == JSON.null else {
             return results.count
         }
         
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell")
+        var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "Cell")
         if (cell != nil)
         {
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
+            cell = UITableViewCell(style: UITableViewCellStyle.subtitle,
                 reuseIdentifier: "Cell")
         }
         
-        if searchTerm.containsString("song="){
-            cell?.textLabel!.text = results[indexPath.row]["song"].stringValue
-            cell?.detailTextLabel!.text = results[indexPath.row]["artist"].stringValue
+        if searchTerm.contains("song="){
+            cell?.textLabel!.text = results[(indexPath as NSIndexPath).row][0].stringValue
+            cell?.detailTextLabel!.text = results[(indexPath as NSIndexPath).row][1].stringValue
         } else {
-            cell?.textLabel!.text = results[indexPath.row]["artist"].stringValue
-            cell?.detailTextLabel!.text = results[indexPath.row]["song"].stringValue
+            cell?.textLabel!.text = results[(indexPath as NSIndexPath).row]["artist"].stringValue
+            cell?.detailTextLabel!.text = results[(indexPath as NSIndexPath).row]["song"].stringValue
         }
         
         return cell!
         
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedItem = indexPath.row
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        performSegueWithIdentifier("rvcSegue", sender: self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        /* DISABLED FOR NOW
+        selectedItem = (indexPath as NSIndexPath).row
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "rvcSegue", sender: self)
+         */
     }
 
 }

@@ -9,8 +9,8 @@
 import Foundation
 
 // MARK: - String Functions
-func prepareURLString(str: String, searchType: String ) -> String {
-    let temp = searchType.stringByAppendingString("=")
+func prepareURLString(_ str: String, searchType: String ) -> String {
+    let temp = searchType + "="
     var formattedString = str
     
     if( searchType != "all" ){
@@ -19,18 +19,18 @@ func prepareURLString(str: String, searchType: String ) -> String {
         formattedString = "true";
     }
     
-    return temp.stringByAppendingString(formattedString)
+    return temp + formattedString
 }
 
-func formatString( toFormat: String)-> String {
+func formatString( _ toFormat: String)-> String {
     var formattedString:String!
     
     let chars : Set<Character> = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890'".characters)
     formattedString = String(toFormat.characters.filter { chars.contains($0) })
-    formattedString = formattedString.stringByTrimmingCharactersInSet(
-        NSCharacterSet.whitespaceAndNewlineCharacterSet()
+    formattedString = formattedString.trimmingCharacters(
+        in: CharacterSet.whitespacesAndNewlines
     )
-    formattedString = formattedString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+    formattedString = formattedString.addingPercentEscapes(using: String.Encoding.utf8)!
     
     return formattedString
 }

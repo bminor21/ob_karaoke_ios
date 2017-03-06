@@ -12,6 +12,7 @@
 		8B110F4E1C002759005F7051 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B110F4D1C002759005F7051 /* SearchResultViewController.swift */; };
 		8B5B91671C49FF350041E48F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5B91661C49FF350041E48F /* Utils.swift */; };
 		8B6DC9F91BFFF4700040567A /* office-bar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6DC9F71BFFF4700040567A /* office-bar-logo.png */; };
+		8BB51F911E6CCFD900C036D8 /* songs.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BB51F901E6CCFD900C036D8 /* songs.json */; };
 		8BBA73031BFD64D70053221E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA73021BFD64D70053221E /* AppDelegate.swift */; };
 		8BBA73051BFD64D70053221E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA73041BFD64D70053221E /* ViewController.swift */; };
 		8BBA73081BFD64D70053221E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA73061BFD64D70053221E /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		8B110F4D1C002759005F7051 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		8B5B91661C49FF350041E48F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8B6DC9F71BFFF4700040567A /* office-bar-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "office-bar-logo.png"; sourceTree = "<group>"; };
+		8BB51F901E6CCFD900C036D8 /* songs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songs.json; sourceTree = "<group>"; };
 		8BBA72FF1BFD64D70053221E /* Office Bar Karaoke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Office Bar Karaoke.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BBA73021BFD64D70053221E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BBA73041BFD64D70053221E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +48,14 @@
 				8B5B91661C49FF350041E48F /* Utils.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8BB51F8F1E6CCFC100C036D8 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				8BB51F901E6CCFD900C036D8 /* songs.json */,
+			);
+			name = res;
 			sourceTree = "<group>";
 		};
 		8BB59CC21BFFF82C007546DF /* images */ = {
@@ -76,6 +86,7 @@
 		8BBA73011BFD64D70053221E /* Office Bar Karaoke */ = {
 			isa = PBXGroup;
 			children = (
+				8BB51F8F1E6CCFC100C036D8 /* res */,
 				8B5B91651C49FEEB0041E48F /* ViewControllers */,
 				8BB59CC21BFFF82C007546DF /* images */,
 				8BBA73021BFD64D70053221E /* AppDelegate.swift */,
@@ -120,6 +131,7 @@
 					8BBA72FE1BFD64D60053221E = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = BY28RZ2MDQ;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -146,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB51F911E6CCFD900C036D8 /* songs.json in Resources */,
 				8B6DC9F91BFFF4700040567A /* office-bar-logo.png in Resources */,
 				8BBA73101BFD64D70053221E /* LaunchScreen.storyboard in Resources */,
 				8BBA730D1BFD64D70053221E /* Assets.xcassets in Resources */,
@@ -284,6 +297,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brettminor.OB-Karaoke";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -299,6 +313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brettminor.OB-Karaoke";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

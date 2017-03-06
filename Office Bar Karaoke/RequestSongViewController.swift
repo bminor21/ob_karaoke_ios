@@ -32,13 +32,13 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
         
         submitButton.layer.cornerRadius = 5
         submitButton.layer.borderWidth = 1
-        submitButton.layer.borderColor = UIColor.whiteColor().CGColor
+        submitButton.layer.borderColor = UIColor.white.cgColor
 
     }
     
     //MARK: - Delegation Functions
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
@@ -48,7 +48,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func sendRequest(sender: AnyObject) {
+    @IBAction func sendRequest(_ sender: AnyObject) {
         let name = singerField.text!
         
         
@@ -60,17 +60,17 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
         
         let endPoint: String = "http://officebarkaraoke.netne.net/request.php?song=" + formatString(songSelection) + "&artist=" + formatString(artistSelection) + "&name=" + formatString(name)
         print(endPoint)
-        guard let url = NSURL(string: endPoint) else {
+        guard let url = URL(string: endPoint) else {
             print("Error: cannot create URL")
             return
         }
         
         
-        let session = NSURLSession.sharedSession()
-        let req = NSURLRequest( URL:url )
-        session.dataTaskWithRequest(req, completionHandler: { ( data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        let session = URLSession.shared
+        let req = URLRequest( url:url )
+        session.dataTask(with: req, completionHandler: { ( data: Data?, response: URLResponse?, error: NSError?) -> Void in
             
-            if let httpResponse = response as? NSHTTPURLResponse {
+            if let httpResponse = response as? HTTPURLResponse {
                 if( httpResponse.statusCode != 200 ) {
                     print("Received status code \(httpResponse.statusCode)")
                     return
@@ -93,7 +93,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
                 self.isSuccessful = true
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 
                 var alertTitle:String!
                 if( self.isSuccessful! ){
@@ -102,21 +102,21 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
                     alertTitle = "Error"
                 }
             
-                let alertController = UIAlertController(title: alertTitle, message: self.getMessageText(self.isSuccessful), preferredStyle: .Alert)
+                let alertController = UIAlertController(title: alertTitle, message: self.getMessageText(self.isSuccessful), preferredStyle: .alert)
                 
-                let home = UIAlertAction(title: "Okay", style: .Default, handler: {action in
-                        self.performSegueWithIdentifier("unwindToMain", sender: self)
+                let home = UIAlertAction(title: "Okay", style: .default, handler: {action in
+                        self.performSegue(withIdentifier: "unwindToMain", sender: self)
                 });
                 
                 alertController.addAction(home);
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
             });
             
-        }).resume()
+        } as! (Data?, URLResponse?, Error?) -> Void).resume()
 
     }
     
-    func getMessageText( success:Bool)->String{
+    func getMessageText( _ success:Bool)->String{
         var buf: String!
         
         if(success){
@@ -131,11 +131,11 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
     
     func displayError()->Void{
         
-        let alertController = UIAlertController(title: "Error", message: "Name field cannot be empty.", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Error", message: "Name field cannot be empty.", preferredStyle: .alert)
         
-        let okay = UIAlertAction(title: "Okay", style: .Default ) { (action: UIAlertAction )->Void in }
+        let okay = UIAlertAction(title: "Okay", style: .default ) { (action: UIAlertAction )->Void in }
         alertController.addAction(okay)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     
@@ -145,8 +145,8 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
     // override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // }
     
-    @IBAction func backButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
