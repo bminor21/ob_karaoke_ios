@@ -135,14 +135,10 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
             cell = UITableViewCell(style: UITableViewCellStyle.subtitle,
                 reuseIdentifier: "Cell")
         }
-        
-        if searchTerm.contains("song="){
-            cell?.textLabel!.text = results[(indexPath as NSIndexPath).row][0].stringValue
-            cell?.detailTextLabel!.text = results[(indexPath as NSIndexPath).row][1].stringValue
-        } else {
-            cell?.textLabel!.text = results[(indexPath as NSIndexPath).row]["artist"].stringValue
-            cell?.detailTextLabel!.text = results[(indexPath as NSIndexPath).row]["song"].stringValue
-        }
+    
+        cell?.textLabel!.text = results[(indexPath as NSIndexPath).row]["title"].stringValue
+        cell?.detailTextLabel!.text = results[(indexPath as NSIndexPath).row]["artist"].stringValue
+
         
         return cell!
         

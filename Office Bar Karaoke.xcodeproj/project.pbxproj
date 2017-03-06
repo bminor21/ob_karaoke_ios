@@ -130,7 +130,7 @@
 				TargetAttributes = {
 					8BBA72FE1BFD64D60053221E = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = BY28RZ2MDQ;
+						DevelopmentTeam = YZCXAN78VN;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -292,6 +292,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = YZCXAN78VN;
 				INFOPLIST_FILE = "Office Bar Karaoke/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brettminor.OB-Karaoke";
@@ -308,6 +309,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = YZCXAN78VN;
 				INFOPLIST_FILE = "Office Bar Karaoke/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brettminor.OB-Karaoke";
