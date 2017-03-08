@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             break
             case 1 : searchType = "artist"
             break
-            default : searchType = "all"
+            default : searchType = "song"
         }
         
     }

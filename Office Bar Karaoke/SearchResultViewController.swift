@@ -43,7 +43,7 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
         if(segue.identifier == "rvcSegue") {
             let dvc = segue.destination as! RequestSongViewController;
             dvc.artistSelection = results[selectedItem]["artist"].stringValue
-            dvc.songSelection = results[selectedItem]["song"].stringValue
+            dvc.songSelection = results[selectedItem]["title"].stringValue
         }
     }
     
@@ -146,11 +146,10 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, NSURL
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        /* DISABLED FOR NOW
         selectedItem = (indexPath as NSIndexPath).row
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "rvcSegue", sender: self)
-         */
+        
     }
 
 }

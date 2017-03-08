@@ -58,7 +58,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
         }
         
         
-        let endPoint: String = "http://officebarkaraoke.netne.net/request.php?song=" + formatString(songSelection) + "&artist=" + formatString(artistSelection) + "&name=" + formatString(name)
+        let endPoint: String = "https://obkaraoke.herokuapp.com/request.php?song=" + formatString(songSelection) + "&artist=" + formatString(artistSelection) + "&name=" + formatString(name)
         print(endPoint)
         guard let url = URL(string: endPoint) else {
             print("Error: cannot create URL")
@@ -68,7 +68,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
         
         let session = URLSession.shared
         let req = URLRequest( url:url )
-        session.dataTask(with: req, completionHandler: { ( data: Data?, response: URLResponse?, error: NSError?) -> Void in
+        session.dataTask(with: req, completionHandler: { ( data: Data?, response: URLResponse?, error: Error?) -> Void in
             
             if let httpResponse = response as? HTTPURLResponse {
                 if( httpResponse.statusCode != 200 ) {
@@ -112,7 +112,7 @@ class RequestSongViewController: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
             });
             
-        } as! (Data?, URLResponse?, Error?) -> Void).resume()
+        }).resume()
 
     }
     
